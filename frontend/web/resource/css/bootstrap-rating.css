@@ -1,0 +1,23 @@
+.symbol {
+  display: inline-block;
+  border-radius: 50%;
+  border: 5px double white;
+  width: 50px;
+  height: 50px;
+}
+
+.symbol-empty {
+  background-color: #ccc;
+}
+
+.symbol-filled {
+  background-color: black;
+}
+
+.glyphicon-star {
+  font-size: xx-large;
+}
+
+.box-container {
+  text-align: center;
+}

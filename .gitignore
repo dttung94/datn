@@ -1,0 +1,22 @@
+# phpstorm project files
+.idea
+
+# composer vendor dir
+/vendor
+/upload/avatar
+# Mac DS_Store Files
+__MACOSX
+.DS_Store
+
+# NPM packages
+/node_modules
+.env
+
+# visual studio code project files
+.vscode
+
+# audio file
+/backend/web/resource/audio/
+
+# audio file
+/backend/web/resource/img/

@@ -1,0 +1,619 @@
+.booking-manage-area {
+    /*zoom: 75%;*/
+    /*-moz-transform: scale(3);*/
+    /*-moz-transform-origin: 0 0;*/
+    font-size: 5px !important;
+}
+
+.book-list-wrap {
+    display: flex;
+}
+
+.worker-wrap, .calendar-wrap {
+    float: none;
+}
+
+#table-booking-manage, #table-booking-manage > table {
+    height: 100%;
+}
+
+.custom-table-booking > table {
+    height: auto !important;
+}
+/**
+TODO Table time line CSS
+ */
+.widget-clock.blue-light .time {
+    font-size: 15px;
+    color: #57b5a7;
+    cursor: pointer;
+}
+
+.table-scrollable {
+    margin: 0px !important;
+}
+
+.table-scrollable table thead tr th.hour-col {
+    vertical-align: middle;
+    padding: 1px !important;
+}
+
+.table-scrollable table thead tr td.minute-col,
+.table-scrollable table tbody tr td.minute-col {
+    padding: 2px 5px;
+}
+
+.left {
+    padding-right: 0px !important;
+}
+
+.right {
+    padding-left: 0px !important;
+}
+
+tr.timeline-row {
+    height: 0px;
+}
+
+tr.timeline-row td {
+}
+
+tr.worker-row {
+    height: 54px;
+}
+
+tr.worker-row table.worker-info {
+    float: left;
+    height: 46px !important;
+    border: 1px solid #ddd;
+    margin-bottom: 0px;
+    font-size: 10px !important;
+}
+
+tr.worker-row table.worker-info .name,
+tr.worker-row table.worker-info .working-time,
+tr.worker-row table.worker-info .total-booking,
+tr.worker-row table.worker-info .booking-repeat-percent {
+    padding: 2px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+tr.worker-row table.worker-info .total-booking,
+tr.worker-row table.worker-info .booking-repeat-percent {
+    width: 50% !important;
+}
+
+tr.worker-row table.worker-info .name {
+    font-weight: 700;
+    color: #2B3642;
+}
+
+tr.worker-row table.worker-info .name a.worker-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 60px !important;
+    white-space: nowrap;
+    display: block;
+    color: #2B3642 !important;
+}
+
+tr.worker-row table.worker-info .name.rank-1,
+.guide .name.rank-1 {
+    background-color: #F0D701;
+    color: #2B3642 !important;
+}
+
+tr.worker-row table.worker-info .name.rank-8,
+.guide .name.rank-8 {
+    background-color: #E161B2;
+    color: #2B3642 !important;
+}
+
+tr.worker-row table.worker-info .name.rank-10,
+.guide .name.rank-10 {
+    background-color: #b8fe9a;
+    color: #2B3642 !important;
+}
+
+tr.worker-row table.worker-info .name.rank-5,
+.guide .name.rank-5 {
+    background-color: aqua;
+    color: #2B3642 !important;
+}
+
+tr.worker-row .worker-note {
+    float: right;
+    position: relative;
+}
+
+tr.worker-row .worker-note textarea {
+    height: 46px !important;
+    width: 100% !important;
+    resize: none;
+    font-size: 10px;
+}
+
+tr.worker-row .worker-note i.btn-edit {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: none;
+    cursor: pointer;
+}
+
+tr.worker-row .worker-note:hover i.btn-edit {
+    display: block;
+}
+
+.hour-col {
+    text-align: center;
+    border: solid 1px #ddd !important;
+}
+
+.hour-col.now {
+    background-color: #E7AA4F;
+    border-color: #E7AA4F !important;
+}
+
+.minute-col {
+    border-right: dotted 1px #ddd !important;
+}
+
+.minute-col.start-hour {
+    border-left: solid 1px #ddd !important;
+}
+
+.minute-col.addable:hover,
+.minute-col.selected {
+    border: solid 1px #5b9bd1 !important;
+}
+
+.minute-col.now {
+    opacity: 1 !important;
+}
+
+.minute-col.holiday-time,
+.minute-col.disabled,
+.minute-col.past {
+    background-color: #EFF1F9;
+    opacity: .7 !important;
+    cursor: not-allowed;
+}
+
+.minute-col.addable {
+    cursor: pointer;
+}
+
+.minute-col.working-time {
+    background-color: #FCFFD1;
+}
+
+.minute-col.now {
+    background-color: #E7AA4F;
+    cursor: not-allowed !important;
+    border: solid 1px #E7AA4F !important;
+}
+
+.minute-col.slot.past,
+.minute-col.slot.now {
+    cursor: not-allowed !important;
+}
+
+.minute-col.slot {
+    color: #FFFFFF;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px !important;
+    border: solid 1px #ddd;
+}
+
+.minute-col.slot div.info {
+    width: 100% !important;
+    height: 53px !important;
+}
+
+.minute-col.slot div.info div.heading {
+    height: 15px;
+    background-color: rgb(237, 197, 195);
+    padding-left: 2px;
+    position: relative;
+    font-size: 10px;
+    vertical-align: middle;
+    padding-top: 2px;
+    text-align: left;
+}
+
+.minute-col.slot div.info div.heading,
+.minute-col.slot div.info div.heading a {
+    color: rgb(5, 6, 6);
+}
+
+.minute-col.slot div.info div.heading i.action {
+    float: right;
+    margin-right: 2px;
+}
+
+.minute-col.slot div.info div.heading div.btn-group {
+    position: absolute;
+    right: 2px;
+}
+
+.minute-col.slot div.info div.body {
+    height: 38px !important;
+    padding: 2px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    font-size: 10px;
+    background-color: #5b9bd1;
+    color: #FFF;
+}
+
+.minute-col.slot div.info div.count-down {
+    display: none;
+}
+
+/**
+todo style of booking online
+ */
+.minute-col.slot.slot-booking-online.status-pending div.info div.body {
+    background-color: rgb(213, 51, 37);
+    color: #FFF;
+}
+
+.minute-col.slot.slot-booking-online.status-pending-change div.info div.body {
+    background-color: rgb(144, 210, 19);
+    color: #FFF;
+}
+
+.minute-col.slot.slot-booking-online.status-pending div.info div.count-down, .minute-col.slot.slot-booking-online.status-pending-change div.info div.count-down {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    color: #4406FA;
+    font-size: 15px;
+}
+
+.minute-col.slot.slot-booking-online.status-updating div.info div.count-down, .minute-col.slot.slot-booking-online.status-updating-change div.info div.count-down {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    color: #4406FA;
+    font-size: 15px;
+}
+
+.minute-col.slot.slot-booking-online.status-updating div.info div.body {
+    background-color: rgb(237, 185, 24);
+    color: black;
+}
+
+.minute-col.slot.slot-booking-online.status-accepted div.info div.body {
+    background-color: rgb(66, 29, 255);
+    color: #FFF;
+}
+
+.minute-col.slot.slot-booking-online.status-canceled div.info div.body {
+    background-color: #E87E04;
+    color: #FFF;
+}
+
+/**
+todo style of booking free
+ */
+.minute-col.slot.slot-booking-free div.info div.body {
+    -webkit-border-radius: 0px 0px 40px 40px !important;
+    -moz-border-radius: 0px 0px 40px 40px !important;
+    border-radius: 0px 0px 40px 40px !important;
+}
+
+.minute-col.slot.slot-booking-free.status-confirming div.info div.body {
+    background-color: #F9A825;
+    color: #FFF;
+    opacity: 0.7;
+}
+
+.minute-col.slot.slot-booking-free.status-confirming div.info div.count-down {
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 30%;
+    color: #E64A19;
+    font-size: 17px;
+}
+
+.minute-col.slot.slot-booking-free.status-confirming.width-6 div.info div.count-down {
+    right: 30%;
+}
+
+.minute-col.slot.slot-booking-free.status-confirming.width-4 div.info div.count-down {
+    right: 20%;
+}
+
+.minute-col.slot.slot-booking-free.status-accepted div.info div.body {
+    background-color: rgb(66, 29, 255);
+    color: #FFF;
+}
+
+.minute-col.slot.slot-booking-free.status-canceled div.info div.body {
+    background-color: #E87E04;
+    color: #FFF;
+}
+
+.minute-col.slot.slot-booking-free.status-updating div.info div.count-down {
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 30%;
+    color: #4406FA;
+    font-size: 17px;
+}
+
+/**
+todo style of booking offline
+ */
+.minute-col.slot.slot-booking-offline.status-accepted div.info div.body {
+    background-color: rgb(0, 0, 0);
+    color: #FFF;
+}
+
+.mix {
+    position: relative;
+    overflow: hidden;
+}
+
+.mix .mix-inner {
+    position: relative;
+    width: 100%;
+}
+
+.mix .mix-details {
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+    padding: 1px;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    bottom: -130%;
+    text-align: center;
+    position: absolute;
+    background: #0da3e2;
+    transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.minute-col.selected .mix-details,
+.mix:hover .mix-details {
+    bottom: -1px;
+    transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.mix .mix-details i {
+    color: #fff;
+    font-size: 12px;
+}
+
+.mix a.action {
+    color: #fff;
+    font-size: 10px;
+    display: block;
+    cursor: pointer !important;
+    margin-top: 2px;
+    margin-right: 2px;
+    padding: 1px 2px;
+    background: #2C6EAC;
+    border: solid 1px #2C6EAC;
+    float: right;
+    width: 15px;
+    height: 15px;
+}
+
+.mix .mix-details a.action:hover {
+    color: #fff;
+    text-decoration: none;
+    border: solid 1px #eee;
+}
+
+/**
+TODO free booking toolbar CSS
+ */
+
+.free-online-booking-toolbar {
+    position: fixed;
+    width: 100%;
+    height: 55px;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #ccc;
+    display: flex;
+}
+.free-online-booking-toolbar .control-box {
+    cursor: pointer;
+    width: 5%;
+    background: #2900ff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    -webkit-box-orient: vertical;
+    -ms-box-orient: vertical;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+.free-online-booking-toolbar .control-box i {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.free-online-booking-toolbar .list-box {
+    width: 95%;
+    background-color: #FCFFCB;
+    display: flex;
+}
+.free-online-booking-toolbar .list-box .free-online-booking {
+    height: 100%;
+    width: 100px;
+    margin: 0px 5px 0px 5px;
+    background-color: transparent;
+    border-radius: 5px 5px 30px 30px !important;
+}
+.free-online-booking-toolbar .list-box .free-online-booking .title {
+    font-size: 12px;
+    background: #ffc7c7;
+    padding: 0 3px;
+    height: 20px;
+    font-weight: bold;
+    text-align: left;
+    border-radius: 3px 3px 0px 0px !important;
+    cursor: move;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.free-online-booking-toolbar .list-box .free-online-booking .title a.action {
+    color: #333;
+    float: right;
+    margin-right: 5px;
+}
+.free-online-booking-toolbar .list-box .free-online-booking .content {
+    font-size: 14px;
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+    background: red;
+    height: 38px;
+    box-shadow: 1px 1px 1px #ccc;
+    border-radius: 0px 0px 30px 30px !important;
+    cursor: move;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.free-online-booking-toolbar .list-box .free-online-booking .content p {
+    margin: 0px !important;
+    font-size: 12px;
+}
+/**
+CSS GUIDE
+ */
+.guide .name {
+    padding: 1px;
+    display: block;
+    width: 100%;
+}
+.guide .minute-col {
+    border: none !important;
+    width: 66px;
+    float: left;
+    margin-right: 10px;
+}
+.guide .minute-col.slot div.info div.body {
+    height: 50px;
+}
+.custom-col {
+    padding: 0 4px !important;
+}
+.custom-row-left {
+    padding: 3px !important;
+}
+.name-worker {
+    height: 46px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    text-align: center;
+}
+.name-worker a{
+    color: black;
+}
+.background-1{
+    background-color: #F0D701;
+}
+.background-5{
+    background-color: aqua;
+}
+.background-8{
+    background-color: #E161B2;
+}
+.background-10{
+    background-color: #b8fe9a;
+}
+.custom-btn-group {
+    margin-top: 10%;
+}
+.custom-note {
+    padding:0 !important;
+}
+.custom-content p{
+    font-size: 10px !important;
+}
+.title a.custom-action {
+    margin: 0 !important;
+}
+.custom-heading{
+    font-size: 8px !important;
+}
+.custom-label {
+    font-size: 9px !important;
+}
+.custom-mix {
+    height: 60px !important;
+}
+.free-online-booking > .title span, .custom-content > .name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 33px;
+    display: inline-block;
+}
+.table-scrollable-top {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border: none 0 RED;
+    height: 20px;
+    position: absolute;
+    top: -20px;
+}
+.scroll-div1 {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height:20px;
+}
+.custom-body {
+    margin-top: 2px;
+}
+.custom-body p {
+    margin: -3px;
+}
+.edit-time-worker {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.color-change {
+    height: 46px;
+    border: 1px;
+}
+.btn-save {
+    position: absolute;
+    bottom: 0;
+    height: 46px;
+}
+.btn-save-box {
+    height: 71px;
+    position: relative;
+}

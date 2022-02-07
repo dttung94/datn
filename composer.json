@@ -1,0 +1,53 @@
+{
+  "name": "cosihi/unpretei-reserve-system",
+  "description": "Unpretei Reserve System",
+  "keywords": [
+    "yii2",
+    "cosihi",
+    "unpretei-reserve-system",
+    "booking"
+  ],
+  "homepage": "",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "support": {
+    "backlog": "https://project69.backlogtool.com/projects/URS",
+    "issues": "https://project69.backlogtool.com/find/URS?condition.issueTypeId=&condition.componentId=&condition.versionId=&condition.fixedVersionId=&condition.statusId=1&condition.statusId=2&condition.statusId=3&condition.priority=&condition.assignerId=&condition.createdUserId=&condition.resolutionId=&condition.parentChildIssue=&condition.parentIssueId=&condition.createdRange.begin=&condition.createdRange.end=&condition.updatedRange.begin=&condition.updatedRange.end=&condition.startDateRange.begin=&condition.startDateRange.end=&condition.limitDateRange.begin=&condition.limitDateRange.end=&condition.file=&condition.sort=UPDATED&condition.order=false&condition.query=&condition.simpleSearch=true&condition.allOver=false&condition.offset=0",
+    "wiki": "https://project69.backlogtool.com/wiki/URS/Home",
+    "source": "https://project69.backlogtool.com/git/URS"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "*",
+    "yiisoft/yii2-bootstrap": "*",
+    "yiisoft/yii2-swiftmailer": "*",
+    "ip2location/ip2location-php": "7.*",
+    "twilio/sdk": "*",
+    "consik/yii2-websocket": "^1.0",
+    "textalk/websocket": "1.0.*",
+    "linslin/yii2-curl": "*",
+    "phpoffice/phpexcel": "*",
+    "aws/aws-sdk-php": "*",
+    "wadeshuler/yii2-sendgrid": "~1.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-codeception": "*",
+    "yiisoft/yii2-debug": "*",
+    "yiisoft/yii2-gii": "*",
+    "yiisoft/yii2-faker": "*"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
+  },
+  "autoload": {
+    "files": [
+    ]
+  }
+}

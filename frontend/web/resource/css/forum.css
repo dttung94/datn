@@ -1,0 +1,114 @@
+.jumbotron p{
+    font-size: 14px;
+}
+.material-icons{
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    padding: 10px;
+}
+p, a {
+    font-size: 14px;
+}
+.pagination span {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    font-size: 14px;
+}
+.page-item.active .page-link {
+    color: #000 !important;
+    background-color: #ffd700 !important;
+    border-color: #ffd700 !important;
+}
+hr.title-separator{
+    width: 150px;
+    text-align: center;
+    border: solid 2px #ffd700;
+}
+.post-header-line-1 .rounded-circle {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    transition: border-color 1s;
+}
+.post-header-line-1 > span {
+    margin: 0 0.5rem;
+}
+.title-post-other{
+    color: rgb(17, 70, 105)
+}
+.post-item:hover{
+    background: linear-gradient(130deg, #ccc 0%, #ccc 100%);
+}
+.item-comment {
+    border-color: #ddd;
+    padding: 20px;
+}
+.media-body {
+    position: relative;
+    /*border-color: #ddd;*/
+}
+.media-date {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+}
+.media-date li { padding: 0; }
+.media-date li:first-child:before { content: ''; }
+.media-date li:before {
+    content: '.';
+    margin-left: -2px;
+    margin-right: 2px;
+}
+.media-comment { margin-bottom: 0; }
+.media-replied { margin: 0 0 0 50px; }
+.media-replied .media-heading { padding-left: 6px; }
+.toast-error {
+    background-color: #bd362f !important;
+}
+.toast-success {
+    background-color: #51a351 !important;
+}
+.modal-backdrop.show {
+    opacity: 0.9 !important;
+}
+.modal-content{
+    padding: 50px 25px 100px 25px;
+}
+
+/*.content-post .title {*/
+/*    font-size: 3.5rem;*/
+/*}*/
+
+.post-content p{
+    font-size: 1.5rem;
+}
+
+.media-comment {
+    font-size: 1.25rem;
+}
+
+.post-content {
+    background: #ffd70059;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.item-comment {
+    background: #ffd70059;
+}
+
+@media only screen and (max-width: 600px) {
+    .modal-content-upload-avatar {
+        width: 100% !important;
+    }
+}
+
+.modal-content-upload-avatar{
+    width: 60%;
+}
