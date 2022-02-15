@@ -16,9 +16,6 @@ $this->breadcrumbs = [
     ]
 ];
 $bundle = App::$app->assetManager->getBundle(AppAsset::className());
-$this->actions[] = Html::tag("label", date('Y-m-d H:i'), [
-    "style" => "padding-top: 10px",
-]);
 $this->registerJsFile($bundle->baseUrl . "/js/controllers/dashboard.js", [
     "depends" => [
         AppAsset::className(),

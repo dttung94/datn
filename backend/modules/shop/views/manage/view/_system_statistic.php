@@ -150,7 +150,7 @@ $this->registerJs(<<<JS
             "endDate": ("$endLabel" != "")?moment("$endLabel","DD/M/YYYY"):moment().add(1, 'days'),
             opens: 'left',
         }, function(start, end, label) {
-            if(label == 'All'){
+            if(label == 'Tất cả'){
                 $('#dashboard-report-date-range span').html(label);
                 reloadDashboardPage("","");
             }else{
