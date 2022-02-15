@@ -47,6 +47,6 @@ class m211022_091055_create_user_token_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{$user_token}}');
+        $this->dropTable('{{%user_token}}');
     }
 }

@@ -273,7 +273,7 @@ class BookingController extends BackendController
             if ($model->toUpdateNote($this->request->post("note"))) {
                 return [
                     "success" => true,
-                    "message" => \App::t("backend.booking.message", "予約ノートを更新しました。"),
+                    "message" => \App::t("backend.booking.message", "Đã cập nhật ghi chú"),
                 ];
             } else {
                 return [
@@ -324,7 +324,7 @@ class BookingController extends BackendController
         }
         return [
             "success" => false,
-            "message" => \App::t("backend.booking.message", "予約が見つかりません。"),
+            "message" => \App::t("backend.booking.message", "Không tìm thấy kết quả"),
         ];
     }
 
@@ -349,7 +349,7 @@ class BookingController extends BackendController
                 );//todo send notification
                 return [
                     "success" => true,
-                    "message" => \App::t("backend.booking.message", "枠削除しました."),
+                    "message" => \App::t("backend.booking.message", "Đã xóa thành công"),
                 ];
             } else {
                 return [
@@ -361,7 +361,7 @@ class BookingController extends BackendController
         }
         return [
             "success" => false,
-            "message" => \App::t("backend.booking.message", "予約が見つかりません。"),
+            "message" => \App::t("backend.booking.message", "Không tìm thấy kết quả"),
         ];
     }
 

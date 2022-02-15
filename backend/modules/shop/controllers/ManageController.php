@@ -120,7 +120,7 @@ class ManageController extends BackendController
                 foreach ($checks as $check) {
                     $message .= "【".$check->date."】";
                 }
-                \App::$app->session->setFlash("ERROR_MESSAGE", \App::t("backend.shop.message", $message."に枠がありますので、営業時間が変更できません。"));
+                \App::$app->session->setFlash("ERROR_MESSAGE", \App::t("backend.shop.message", $message."đang có khung làm việc, nên không thể cập nhật"));
             }
         }
         return $this->render('update', [
@@ -165,7 +165,7 @@ class ManageController extends BackendController
         if ($form->status == $form::STATUS_INACTIVE) {
             $form->status = ShopForm::STATUS_DELETED;
             if ($form->save(false)) {
-                \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.shop.message", "店舗削除成功しました"));
+                \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.shop.message", "Xóa thành công"));
             } else {
                 \App::$app->session->setFlash("ERROR_MESSAGE", StringHelper::errorToString($form->getErrors()));
             }

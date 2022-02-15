@@ -214,10 +214,6 @@ JS
                 "model" => $model,
             ]); ?>
 
-            <?php echo $this->render("_modal_shop_config", [
-                "model" => $model,
-            ]); ?>
-
             <?php echo $this->render("_modal_worker_note", [
             ]); ?>
 

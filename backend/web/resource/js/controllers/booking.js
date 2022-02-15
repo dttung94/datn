@@ -999,7 +999,7 @@ window.angularApp.controller('BookingController', [
                     });
                 },
                 toWorkBreak: function (worker_id, date) {
-                    if (confirm("当欠Emailを送りますか？")) {
+                    if (confirm("Bạn muốn cho nhân viên nghỉ chứ?")) {
                         MailService.composerMail("WORKER_WORK_BREAK", function (type, smsContent, smsTitle) {
                             $.callAJAX({
                                 url: "/calendar/worker/work-break?worker_id=" + worker_id,

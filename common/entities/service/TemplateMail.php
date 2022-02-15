@@ -126,7 +126,7 @@ class TemplateMail extends AbstractObject
             ],
         ],
         self::TYPE_BOOKING_ONLINE_UPDATE => [
-            "title" => '指名予約の修正完了',
+            "title" => 'Cập nhật book',
             "isSingle" => true,
             "isAuto" => true,
             "params" => [
@@ -184,36 +184,6 @@ class TemplateMail extends AbstractObject
             ],
         ],
 
-
-        self::TYPE_WORKER_NEW => [
-            "title" => '新人入店情報',
-            "isSingle" => true,
-            "isAuto" => false,
-            "params" => [
-            ],
-        ],
-        self::TYPE_CANCEL_CALENDAR_WORKER => [
-            "title" => '出勤取り消し',
-            "isSingle" => true,
-            "isAuto" => false,
-            "params" => [
-                'link-on-off-receive'
-            ],
-        ],
-        self::TYPE_CHANGE_TIME_WORKING => [
-            "title" => '出勤時間変更',
-            "isSingle" => true,
-            "isAuto" => false,
-            "params" => [
-                'link-on-off-receive'
-            ],
-        ],
-        self::TYPE_FREE_MAIL => [
-            "title" => '自由メール',
-            "isSingle" => true,
-            "isAuto" => false,
-            "params" => [],
-        ],
     ];
 
     /**
@@ -222,29 +192,6 @@ class TemplateMail extends AbstractObject
      * @param $type : type send mail in page
      * @return array
      */
-    public static function getUserSend($type)
-    {
-        // only 2 typeMail has setting in client
-        if (in_array($type, [self::TYPE_MAIL_MAGAZINE, self::TYPE_WORKER_NEW])) {
-            $array = [
-                self::USER_REGISTERED_RECEIVE_WORKER_REMIND => '受信可能対象',
-                self::USER_TIME => '最終予約がX日間より前（Xは自由に入力可能）',
-                self::USER_TAG => '会員管理画面の任意のタグがついている会員。',
-                self::USER_FAVORITE => '好みのタイプを２つ選択して２つ被った会員 ',
-                self::USER_ALL => '登録者全員（要注意）',
-            ];
-        } else {
-            $array = [
-                self::USER_ALL => '登録者全員',
-                self::USER_TIME => '最終予約がX日間より前（Xは自由に入力可能）',
-                self::USER_TAG => '会員管理画面の任意のタグがついている会員。',
-                self::USER_FAVORITE => '好みのタイプを２つ選択して２つ被った会員 '
-            ];
-        }
-
-        return $array;
-    }
-
     public static function getTypeShowButtonSend()
     {
         return [

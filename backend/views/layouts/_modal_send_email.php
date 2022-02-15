@@ -10,7 +10,7 @@ use yii\bootstrap\Html;
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"></button>
         <h4 class="modal-title">
-            <?php echo App::t("backend.booking.title", "Emailを編集") ?>
+            <?php echo App::t("backend.booking.title", "Chỉnh sửa email") ?>
         </h4>
     </div>
     <div class="modal-body">
@@ -51,7 +51,7 @@ use yii\bootstrap\Html;
                         ],
 //                        "disabled" => "disabled",
                         "ng-model" => "smsForm.title",
-                        "placeholder" => "Email題名",
+                        "placeholder" => "Chỉnh sửa tiêu đề",
                     ]) ?>
                 </div>
                 <div class="form-group">
@@ -63,7 +63,7 @@ use yii\bootstrap\Html;
                             "resize" => "vertical"
                         ],
                         "ng-model" => "smsForm.content",
-                        "placeholder" => "Emailを編集",
+                        "placeholder" => "Chỉnh sửa email",
                     ]) ?>
                 </div>
             </div>
@@ -71,11 +71,11 @@ use yii\bootstrap\Html;
         <?php ActiveForm::end(); ?>
     </div>
     <div class="modal-footer">
-        <?php echo Html::button(App::t("backend.booking.button", "閉じる"), [
+        <?php echo Html::button(App::t("backend.booking.button", "Hủy bỏ"), [
             "class" => "btn default",
             "ng-click" => "cancel()",
         ]) ?>
-        <?php echo Html::button('<i class="fa fa-send"></i>&nbsp;&nbsp;' . App::t("backend.booking.button", "送る"), [
+        <?php echo Html::button('<i class="fa fa-send"></i>&nbsp;&nbsp;' . App::t("backend.booking.button", "Gửi"), [
             "class" => "btn blue",
             "ng-class" => "{'disabled':!smsForm.content}",
             "ng-click" => "sendSMS()",

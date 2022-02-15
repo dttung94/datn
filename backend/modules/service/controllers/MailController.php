@@ -85,32 +85,6 @@ class MailController extends BackendController
         ]);
     }
 
-    public function actionMagazine()
-    {
-        $data = $this->actionGetUserSend(TemplateMail::USER_REGISTERED_RECEIVE_WORKER_REMIND, date('Y-m-d'), '', 'mail_coupon_mega', TemplateMail::TYPE_MAIL_MAGAZINE);
-        $hobbies = SystemData::find()->where(['data_category' => SystemData::CATEGORY_DATA_USER_HOBBY, 'status' => SystemData::STATUS_ACTIVE])->all();
-        $tags = [];
-        $users = [];
-        foreach ($data as $value) {
-            if (!empty($value->tag)) {
-                $tags = array_merge($tags, explode(',', $value->tag));
-            }
-            $users[] = [
-                'id' => $value->user_id,
-                'email' => $value->email,
-                'name' => $value->full_name
-            ];
-        }
-
-
-        return $this->render("template/magazine/index", [
-            'send' => TemplateMail::getUserSend(TemplateMail::TYPE_MAIL_MAGAZINE),
-            'users' => $users,
-            'tags' => $tags,
-            'hobbies' => $hobbies
-        ]);
-    }
-
     public function actionImportFile()
     {
         $file = UploadedFile::getInstanceByName('file');

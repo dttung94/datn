@@ -185,14 +185,14 @@ class SmsController extends BackendController
             if ($mail->toSend($data)) {
                 return [
                     "success" => true,
-                    "message" => \App::t("backend.booking.message", "Email送信成功。"),
+                    "message" => \App::t("backend.booking.message", "Đã gửi email"),
                     "booking" => $bookingInfo,
                 ];
             }
         }
         return [
             "success" => false,
-            "message" => \App::t("backend.booking.message", "Email送信時にエラーがでました。"),
+            "message" => \App::t("backend.booking.message", "Có lỗi xảy ra"),
         ];
     }
 }

@@ -187,7 +187,7 @@ class ShopForm extends \backend\modules\shop\forms\ShopForm
                             $slotEndTime < $scheduleStartTime ||
                             $slotEndTime > $scheduleEndTime
                         ) {
-                            $this->addError("$this->date-$config->worker_id", App::t("backend.schedule.message", "[{worker}]は[{start-time} - {end-time}]に枠あり。", [
+                            $this->addError("$this->date-$config->worker_id", App::t("backend.schedule.message", "{worker} đang có khung làm việc [{start-time} - {end-time}]", [
                                 "worker" => $slot->workerInfo->worker_name,
                                 "start-time" => $slot->start_time,
                                 "end-time" => $slot->end_time,

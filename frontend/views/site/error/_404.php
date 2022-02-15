@@ -12,7 +12,7 @@ $this->title = $message;
         <div class="details">
             <h3><?php echo $name ?></h3>
             <p>
-                <?php echo App::t("frontend.error.message", 'We can not find the page you\'re looking for.<br/><a href="{home-link}">Return home </a>', [
+                <?php echo App::t("frontend.error.message", 'Chúng tôi không tìm thấy trang mà bạn tìm.<br/><a href="{home-link}">Về trang chủ </a>', [
                     "home-link" => App::$app->urlManager->createUrl([
                         "site/index"
                     ]),

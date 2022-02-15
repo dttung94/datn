@@ -52,15 +52,6 @@ return [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
-//                'file' => [
-//                    'class' => 'yii\log\FileTarget',
-//                    'levels' => ['error', 'warning'],
-//                ],
-                'db' => [
-                    'class' => common\forms\system\SystemLogForm::className(),
-                    'levels' => ['error', 'warning'],
-                    'logTable' => 'system_log'
-                ]
             ],
         ],
         'i18n' => [

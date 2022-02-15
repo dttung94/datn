@@ -69,12 +69,10 @@ class BookingOnlineForm extends BookingInfo
                     "course_time" => $this->slotInfo->duration_minute
                 ];
                 if ($status == BookingInfo::STATUS_PENDING) {
-//                    $smsContent = SendSMSForm::getSMSTemplate(SendSMSForm::TYPE_BOOKING_ONLINE_ACCEPT);
                     SendSMSForm::toSend($phoneNumber, $smsContent, $smsParams, [
                         SendSMSForm::TYPE_BOOKING_ONLINE_ACCEPT,
                     ]);
                 } else {
-//                    $smsContent = TemplateSms::getSMSTemplate(TemplateSms::TYPE_BOOKING_ONLINE_UPDATE) . $content . "※このメッセージに返信はできません。";
                     SendSMSForm::toSend($phoneNumber, $smsContent, $smsParams, [
                         SendSMSForm::TYPE_BOOKING_ONLINE_UPDATE,
                     ]);
@@ -161,7 +159,7 @@ class BookingOnlineForm extends BookingInfo
                 return true;
             }
         } else {
-            $this->addError("booking_id", \App::t("backend.booking.message", "Không cho phép từ chối"));
+            $this->addError("booking_id", \App::t("backend.booking.message", "Không từ chối được"));
         }
         return false;
     }
@@ -194,12 +192,6 @@ class BookingOnlineForm extends BookingInfo
         ]), "user_id", "full_name");
     }
 
-    public function getListCustomers()
-    {
-        return ArrayHelper::map(CustomerInfo::findAll([
-            "status" => CustomerInfo::STATUS_ACTIVE
-        ]), "customer_id", "customer_name");
-    }
 
     public function getListShops()
     {

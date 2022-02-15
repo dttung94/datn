@@ -80,7 +80,7 @@ class ShopController extends BackendController
             );//todo send notification
             return [
                 "success" => true,
-                "message" => \App::t("backend.shop_config.message", "店舗情報をセーブしました"),
+                "message" => \App::t("backend.shop_config.message", "Đã lưu thông tin"),
             ];
         } else {
             return [

@@ -88,15 +88,10 @@ class ShopInfo extends AbstractObject
 
             'shop_address' => Yii::t('app.attribute.shop_info.label', 'Địa chỉ'),
             'phone_number' => Yii::t('app.attribute.shop_info.label', 'Số điện thoại'),
-            'shop_domain' => Yii::t('app.attribute.shop_info.label', '店舗ドメイン'),
 
             'status' => Yii::t('app.attribute.shop_info.label', 'Trạng thái'),
             'created_at' => Yii::t('app.attribute.shop_info.label', 'Ngày tạo'),
             'modified_at' => Yii::t('app.attribute.shop_info.label', 'Modified At'),
-//            'is_auto_create' => Yii::t('app.attribute.shop_info.label', 'クーポン自動作成'),
-
-//            'totalBooking' => Yii::t('app.attribute.shop_info.label', '本数'),
-            'workers' => Yii::t('app.attribute.shop_info.label', '在籍'),
             'calendar' => Yii::t('app.attribute.shop_info.label', 'Lịch làm việc'),
 
             "open_door_at" => Yii::t('app.attribute.shop_info.label', 'Giờ mở cửa'),
@@ -117,16 +112,6 @@ class ShopInfo extends AbstractObject
             return true;
         }
         return false;
-    }
-
-    public static function getFreeBookingMinutes()
-    {
-        return [
-            self::DISABLED_BOOKING_FREE => 'フリー予約を無効にする',
-            self::TWENTY_MINUTE => '20分フリーのみ有効',
-            self::THIRTY_MINUTE => '30分フリーのみ有効',
-            self::FIFTY_MINUTE => '20分と30分フリーの有効',
-        ];
     }
 
     public static function getShopColorDefault()

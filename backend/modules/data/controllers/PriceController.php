@@ -44,7 +44,6 @@ class PriceController extends BackendController
                             'save-course-price',
                             'delete-course-price',
                             'create-course-price',
-                            'save-fee',
                         ],
                         'allow' => true,
                         'roles' => [UserInfo::ROLE_ADMIN],
@@ -95,12 +94,12 @@ class PriceController extends BackendController
         if (CoursePriceForm::toDeleteCoursePrice($this->request->post("data"))) {
             return [
                 "success" => true,
-                "message" => \App::t("backend.course.message", "コース料金を削除しました。"),
+                "message" => \App::t("backend.course.message", "Đã xóa"),
             ];
         } else {
             return [
                 "success" => false,
-                "message" => \App::t("backend.course.message", "コース料金作成時エラー"),
+                "message" => \App::t("backend.course.message", "Có lỗi khi xóa"),
             ];
         }
     }
@@ -113,51 +112,14 @@ class PriceController extends BackendController
         if ($model->load($this->request->post(), "") && $model->toSave()) {
             return [
                 "success" => true,
-                "message" => \App::t("backend.course.message", "コース料金を作成しました。"),
+                "message" => \App::t("backend.course.message", "Đã tạo thành công"),
             ];
         } else {
             return [
                 "success" => false,
-                "message" => \App::t("backend.course.message", "コース料金作成時エラー"),
+                "message" => \App::t("backend.course.message", "Có lỗi khi tạo"),
                 "error" => $model->getErrors(),
             ];
         }
-    }
-
-    public function actionFee()
-    {
-        $model = new OptionFeeForm();
-        return $this->render("fee/index", [
-            "model" => $model,
-        ]);
-    }
-
-    public function actionSaveFee($id = null)
-    {
-        if (!$this->request->isAjax) {
-            return $this->redirect("/price/fee");
-        }
-        $this->response->format = Response::FORMAT_JSON;
-        $model = OptionFeeForm::findOne($id);
-        if ($model == null) {
-            $model = new OptionFeeForm();
-            $model->status = OptionFeeForm::STATUS_ACTIVE;
-            $model->type = $this->request->post("type");
-            $model->key = $this->request->post("key");
-            $model->worker_rank = $this->request->post("worker_rank");
-        }
-        $model->price = $this->request->post("temp_price");
-        $model->description = $this->request->post("description");
-        if ($model->save()) {
-            return [
-                "success" => true,
-                "data" => $model,
-            ];
-        }
-        return [
-            "success" => false,
-            "data" => $model,
-            "error" => $model->getErrors(),
-        ];
     }
 }

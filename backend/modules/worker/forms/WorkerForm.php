@@ -209,7 +209,7 @@ class WorkerForm extends WorkerInfo
             if ($totalSlotAvailable == 0 && $totalBookingAvailable == 0) {
                 $this->status = self::STATUS_INACTIVE;
             } else {
-                $this->addError("worker_id", \App::t("backend.worker.message", "予約が入っている女の子をオフにできません。"));
+                $this->addError("worker_id", \App::t("backend.worker.message", "Không cập nhật được do nhân viên đang có lượt book"));
             }
         } else {
             $this->status = self::STATUS_ACTIVE;
@@ -311,7 +311,7 @@ class WorkerForm extends WorkerInfo
         ]);
     }
 
-    public static function toUpload(UploadedFile $file, $path, $name = null, $provider = FileInfo::PROVIDER_SYSTEM)
+    public static function toUpload(UploadedFile $file, $path, $name = null)
     {
         $full_path = \Yii::getAlias('@upload') . "/" . $path;
         if (!file_exists($full_path)) {
@@ -323,14 +323,6 @@ class WorkerForm extends WorkerInfo
         }
         if ($file->saveAs($full_path . "/" . $file_name)) {
             //TODO save file info to database
-
-//            $fileInfo = new FileInfo();
-//            $fileInfo->provider = $provider;
-//            $fileInfo->original_name = $file->baseName;
-//            $fileInfo->name = $file_name;
-//            $fileInfo->path = $path;
-//            $fileInfo->extension = $file->extension;
-//            $fileInfo->size = $file->size;
 
                 return $file_name;
          }

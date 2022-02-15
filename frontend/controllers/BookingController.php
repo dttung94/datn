@@ -130,18 +130,6 @@ class BookingController extends FrontendController
         ];
     }
 
-    protected function optimizeCouponCode($coupons)
-    {
-        $couponMinValue = (int)SystemConfig::getValue(SystemConfig::CATEGORY_COUPON, SystemConfig::BOOKING_COUPON_BLOCK_VALUE);
-        $response = [];
-        foreach ($coupons as $coupon) {
-            if (($coupon->yield % $couponMinValue) == 0) {
-                $response[] = $coupon;
-            }
-        }
-        return $response;
-    }
-
     public function actionUpdateOnlineBooking($booking_id)
     {
         if (!$this->request->isAjax) {
@@ -249,7 +237,7 @@ class BookingController extends FrontendController
         $result = [];
         foreach ($courseTypes as $key => $courseType) {
             $courseTypes[$key]['courseTypeText'] = $isChange ?
-                $courseTypes[$key]['courseTypeText'].'('.$courseTypes[$key]['duration_minute'].'分)' : $courseType['courseTypeText'];
+                $courseTypes[$key]['courseTypeText'].'('.$courseTypes[$key]['duration_minute'].' phút)' : $courseType['courseTypeText'];
             $strShopIds = CourseInfo::findOne($courseType['course_id'])->shop_ids;
             $shopIds = (array)explode('-', $strShopIds);
             if (in_array($shopId, $shopIds)) {
@@ -332,7 +320,7 @@ class BookingController extends FrontendController
         if (($model = BookingConfirmForm::toAccept($id, $accessToken)) != false) {
             \App::$app->webServiceClient->send(
                 WebSocketClient::EVENT_BOOKING_FREE_CONFIRM_ACCEPT,
-                \App::t("common.notice.message", "新しいフリー予約を承認しました"), [
+                \App::t("common.notice.message", "Đã phê duyệt lượt đặt"), [
                     "booking_id" => $id,
                 ]
             );//todo send notification
@@ -346,12 +334,12 @@ class BookingController extends FrontendController
                     "newCalendarData" => CalendarForm::getSlotData($model->slotInfo),
                 ]
             );//todo send notification
-            \Yii::$app->session->setFlash("ALERT_MESSAGE", \App::t("frontend.booking-confirm.message", "予約成功"));
+            \Yii::$app->session->setFlash("ALERT_MESSAGE", \App::t("frontend.booking-confirm.message", "Đặt lịch thành công"));
             return $this->redirect([
                 "/shop"
             ]);
         } else {
-            \Yii::$app->session->setFlash("ERROR_MESSAGE", \App::t("frontend.booking-confirm.message", "予約承認時にエラーがでました。"));
+            \Yii::$app->session->setFlash("ERROR_MESSAGE", \App::t("frontend.booking-confirm.message", "Có lỗi xảy ra"));
             return $this->redirect([
                 "/site/login"
             ]);
@@ -365,7 +353,7 @@ class BookingController extends FrontendController
         if ($model != false && $this->toSendMail($model, $model->slotInfo->shopInfo->shop_email, BookingInfo::BOOKING_REJECT)) {
             \App::$app->webServiceClient->send(
                 WebSocketClient::EVENT_BOOKING_FREE_CONFIRM_REJECT,
-                \App::t("common.notice.message", "新規フリー予約拒否。"), [
+                \App::t("common.notice.message", "Từ chối lượt đặt lịch"), [
                     "booking_id" => $id,
                     "shop_id" => $model->slotInfo->shop_id
                 ]
@@ -381,12 +369,12 @@ class BookingController extends FrontendController
                     "newCalendarData" => empty($_GET['showSlot']) ? CalendarForm::getSlotDataRemove($model->slotInfo) : [],
                 ]
             );//todo send notification
-            \Yii::$app->session->setFlash("ALERT_MESSAGE", \App::t("frontend.booking-confirm.message", "予約を拒否しました"));
+            \Yii::$app->session->setFlash("ALERT_MESSAGE", \App::t("frontend.booking-confirm.message", "Đã bị từ chối"));
             return $this->redirect([
                 "/shop"
             ]);
         } else {
-            \Yii::$app->session->setFlash("ERROR_MESSAGE", \App::t("frontend.booking-confirm.message", "Have error when reject booking."));
+            \Yii::$app->session->setFlash("ERROR_MESSAGE", \App::t("frontend.booking-confirm.message", "Có lỗi xảy ra"));
             return $this->redirect([
                 "/site/login"
             ]);
@@ -414,7 +402,6 @@ class BookingController extends FrontendController
             $book = BookingConfirmForm::findOne([
                 "booking_id" => $id,
                 "status" => BookingConfirmForm::STATUS_CONFIRMING,
-                "booking_type" => BookingConfirmForm::BOOKING_TYPE_FREE,
                 "member_id" => $userToken->user_id,
             ]);
 

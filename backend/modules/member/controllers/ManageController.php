@@ -299,7 +299,7 @@ class ManageController extends BackendController
     {
         $form = $this->findModel($id);
         if ($form->toDelete()) {
-            \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.member.message", "正常に削除しました。"));
+            \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.member.message", "Đã xóa thành công"));
             return $this->redirect(Yii::$app->request->referrer);
         } else {
             return $this->redirect(['index']);
@@ -310,7 +310,7 @@ class ManageController extends BackendController
     {
         $form = $this->findModel($id);
         if ($form->toApprove()) {
-            \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.member.message", "会員を承認しました。"));
+            \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.member.message", "Chờ xác nhận"));
             return $this->redirect(Yii::$app->request->referrer);
         } else {
             \App::$app->session->setFlash("ERROR_MESSAGE", $form->getFirstError("user_id"));
@@ -322,7 +322,7 @@ class ManageController extends BackendController
     {
         $form = $this->findModel($id);
         if ($form->toReject()) {
-            \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.member.message", "メンバーを拒否しました。"));
+            \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.member.message", "Đã từ chối"));
             return $this->redirect(Yii::$app->request->referrer);
         } else {
             \App::$app->session->setFlash("ERROR_MESSAGE", $form->getFirstError("user_id"));
@@ -359,7 +359,7 @@ class ManageController extends BackendController
         ) {
             return [
                 "success" => true,
-                "message" => \App::t("backend.member.message", "メンバー設定をセーブしました。"),
+                "message" => \App::t("backend.member.message", "Cập nhật thành công"),
                 "data" => $model,
             ];
         }
@@ -387,29 +387,6 @@ class ManageController extends BackendController
         ];
     }
 
-    public function actionSavePrivateCoupon($id)
-    {
-        $flag = true;
-        $checkStatus = UserInfo::findOne($id);
-        if ($checkStatus->status == MemberForm::STATUS_CONFIRMING || $checkStatus->status == MemberForm::STATUS_VERIFYING) {
-            $flag = false;
-        }
-        $this->response->format = Response::FORMAT_JSON;
-        $form = new AddPrivateCouponForm();
-        $form->member_id = $id;
-        $form->coupon_type = AddPrivateCouponForm::COUPON_TYPE_ONE_BY_ONE;
-        if ($form->load($this->request->post(), "") && $flag == true && $form->toSave()) {
-            return [
-                "success" => true,
-                "message" => \App::t("backend.member.message", "プライベートクーポン追加成功."),
-            ];
-        }
-        return [
-            "success" => false,
-            "error" => $form->getErrors(),
-            "message" => StringHelper::errorToString($form->getErrors(), "<br/>", \App::t("backend.member.message", "プライベートクーポン追加失敗.") . "<br/>"),
-        ];
-    }
 
     /**
      * @param $id
@@ -445,40 +422,6 @@ class ManageController extends BackendController
         throw new NotFoundHttpException(\Yii::t('common.message', 'The requested page does not exist.'));
     }
 
-    protected function getHobbiesFromKeyword($keyword)
-    {
-        $query = SystemData::find()
-            ->where("status = :status_active", [
-                ":status_active" => SystemData::STATUS_ACTIVE,
-            ])
-            ->andWhere(["LIKE", "value", $keyword])
-            ->distinct('data_id')
-            ->all();
-        $hobbieIds = ArrayHelper::getColumn($query, 'data_id');
-        $responses = [];
-        foreach ($hobbieIds as $hobbieId) {
-            $responses = ArrayHelper::merge($responses, $this->getUserIdsFromUserData($hobbieId, UserData::KEY_USER_HOBBIES));
-        }
-        return array_unique($responses);
-    }
-
-    protected function getUsedShopsFromKeyword($keyword)
-    {
-        $query = ShopInfo::find()
-            ->where("status = :status_active", [
-                ":status_active" => SystemData::STATUS_ACTIVE,
-            ])
-            ->andWhere(["LIKE", "shop_name", $keyword])
-            ->distinct('shop_id')
-            ->all();
-        $shopIds = ArrayHelper::getColumn($query, 'shop_id');
-        $responses = [];
-        foreach ($shopIds as $shopId) {
-            $responses = ArrayHelper::merge($responses, $this->getUserIdsFromUserData($shopId, UserData::KEY_USED_SERVICE_SHOP));
-        }
-        return array_unique($responses);
-    }
-
     protected function getReferrerFromKeyword($keyword)
     {
         $query = UserInfo::find()
@@ -487,17 +430,6 @@ class ManageController extends BackendController
             ])->all();
         $userId = ArrayHelper::getColumn($query, 'user_id');
         return $userId;
-    }
-
-    protected function getUserIdsFromUserData($value, $type)
-    {
-        $valueQuery = '"'.$value.'"';
-        $query = UserData::find()
-            ->where(['field_key' => $type])
-            ->andWhere(['LIKE', 'value', $valueQuery])
-            ->distinct('user_id')
-            ->all();
-        return ArrayHelper::getColumn($query, 'user_id');
     }
 
     public function actionSwitchStatus($id)

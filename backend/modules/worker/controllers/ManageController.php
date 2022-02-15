@@ -220,9 +220,9 @@ class ManageController extends BackendController
         $form = $this->findModel($id);
         $form->status = WorkerForm::STATUS_DELETED;
         if ($form->toSave()) {
-            \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.worker.message", "女の子削除成功"));
+            \App::$app->session->setFlash("ALERT_MESSAGE", \App::t("backend.worker.message", "Đã xóa nhân viên"));
         } else {
-            \App::$app->session->setFlash("ERROR_MESSAGE", \App::t("backend.worker.message", "女の子削除にエラーがあります"));
+            \App::$app->session->setFlash("ERROR_MESSAGE", \App::t("backend.worker.message", "Có lỗi xảy ra"));
         }
         return $this->redirect(['index']);
     }

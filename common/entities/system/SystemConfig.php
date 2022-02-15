@@ -247,24 +247,6 @@ class SystemConfig extends AbstractObject
         return self::findAll(['category' => $category]);
     }
 
-    /**
-     * return config number limit worker reminder
-     * @return int
-     */
-    public static function numberLimitWorkerReminder()
-    {
-        return (int)SystemConfig::getValue(SystemConfig::CONFIG_SITE_MEMBER, SystemConfig::NUMBER_LIMIT_WORKER_REMINDER);
-    }
-
-    /**
-     * return message number limit worker reminder
-     * @return string
-     */
-    public static function messageNumberLimitWorkerReminder()
-    {
-        $numberLimitWorkerReminder = self::numberLimitWorkerReminder();
-        return "最大 " . $numberLimitWorkerReminder . " 人までの登録となります。";
-    }
 
     public static function getDataDesignConfigShopOne($category)
     {

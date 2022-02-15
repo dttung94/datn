@@ -78,7 +78,7 @@ class WorkerController extends BackendController
             );//todo send notification
             return [
                 "success" => true,
-                "message" => \App::t("backend.booking.message", "アップデート成功。"),
+                "message" => \App::t("backend.booking.message", "Cập nhật thành công"),
                 "data" => $model,
             ];
         } else {

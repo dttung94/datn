@@ -63,16 +63,6 @@ class WorkerMappingShop extends AbstractObject
         ];
     }
 
-    public function validateRefId($attribute, $params)
-    {
-        $pattern = '/^[0-9]+$/';
-        if (!$this->hasErrors()) {
-            if (!preg_match($pattern, $this->ref_id)) {
-                $this->addError($attribute, \App::t("backend.worker.message", 'Ref ID 数字のみを含む'));
-            }
-        }
-    }
-
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {

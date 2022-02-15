@@ -88,36 +88,4 @@ class BookingForm extends BookingInfo
         return $this->save();
     }
 
-    protected function updateTotalBooking($type)
-    {
-        $totalBooking = TotalBooking::findOne([
-            'date' => $this->slotInfo->date,
-            'type' => $type,
-            'shop_id' => $this->slotInfo->shop_id
-        ]);
-        $totalBooking->count -= 1;
-        if (!$totalBooking->save()) {
-            $this->addErrors($totalBooking->getErrors());
-        }
-    }
-
-    protected function updateCouponUsed()
-    {
-        $coupon = 0;
-        if ($this->coupons) {
-            foreach ($this->coupons as $couponUsed) {
-                $coupon += $couponUsed->yield;
-            }
-        }
-        $totalCoupons = TotalCouponUsed::find()
-            ->where([
-                'date' => $this->slotInfo->date
-            ])->one();
-        if (!empty($totalCoupons)) {
-            $totalCoupons->value -= $coupon;
-            if (!$totalCoupons->save()) {
-                $this->addErrors($totalCoupons->getErrors());
-            }
-        }
-    }
 }

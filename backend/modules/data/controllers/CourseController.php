@@ -101,7 +101,7 @@ class CourseController extends BackendController
             return [
                 "success" => true,
                 "data" => $model->toArray(),
-                "message" => \App::t("backend.course.message", "Đã tạo dịch vụ mới"),
+                "message" => \App::t("backend.course.message", "Cập nhật thành công"),
             ];
         } else {
             return [
