@@ -39,33 +39,33 @@ class m211022_093809_create_template_sms_table extends Migration
             ],
             [
                 "type" => "MEMBER_FORGOT_PASSWORD_REQUEST",
-                "content" => "■ Đặt lại mật khẩu ■
+                "content" => "* Đặt lại mật khẩu *
                             Vui lòng nhấp vào URL bên dưới và đặt lại mật khẩu của bạn. Vui lòng sử dụng ít nhất 6 ký tự cho mật khẩu:{quên_password_url} 
                             * Bạn không thể trả lời tin này.",
             ],
             [
                 "type" => "BOOKING_ONLINE_ACCEPT",
-                "content" => "■ Đặt lịch đã hoàn tất ■
+                "content" => "* Đặt lịch đã hoàn tất *
                             Bạn đã đặt lịch lúc {booking_date} {booking_time} với nhân viên {worker_name}, thời lượng khoảng {course_id} {course_time} phút. Phí là [{cost} VNĐ]. Nếu có vấn đề gì thì bạn có thể liên hệ với cửa hàng qua số điện thoại {phone_number}.
                             Trong trường hợp bạn muốn hủy lịch, bạn có thể quay lại màn hình đặt lịch và hủy ở phần lịch sử phía trên bên phải của màn hình đặt lịch. 
                             * Bạn không thể trả lời tin nhắn này.",
             ],
             [
                 "type" => "BOOKING_ONLINE_UPDATE",
-                "content" => "■ Điều chỉnh đặt lịch đã hoàn tất ■
+                "content" => "* Điều chỉnh đặt lịch đã hoàn tất *
                             Thành công thay đổi yêu cầu tại {shop_name} với nhân viên {worker_name}
                             * Bạn không thể trả lời tin nhắn này.",
             ],
             [
                 "type" => "BOOKING_ONLINE_REJECT",
-                "content" => '■ Đặt lịch không thành công ■ 
+                "content" => '* Đặt lịch không thành công *
                         Xin lỗi quý khách vì không thể phục vụ quý khách theo yêu cầu với nhân viên {worker_name} tại cửa hàng {shop_name}.
                         Quý khách vui lòng đặt lịch vào thời điểm khác hoặc có thể liên hệ với cửa hàng theo số {phone_number}
                         * Bạn không thể trả lời tin nhắn này.'
             ],
             [
                 "type" => "BOOKING_REMOVE_SMS",
-                "content" => '■ Hủy yêu cầu từ phía cửa hàng ■ 
+                "content" => '* Hủy yêu cầu từ phía cửa hàng * 
                             Cửa hàng {shop_name}. Đặt lịch {booking_date} {booking_time}  với dịch vụ {course_id} và thời gian {course_time} phút của bạn đã bị hủy do có trục trặc phía cửa hàng. 
                             Chúng tôi xin gửi lời xin lỗi tới bạn. Nếu bạn muốn đặt lịch lại, vui lòng gọi cho chúng tôi hoặc đặt lịch trực tuyến lại.
                             *Bạn không thể trả lời tin nhắn này'
