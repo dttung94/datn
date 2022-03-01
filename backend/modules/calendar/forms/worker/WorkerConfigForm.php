@@ -64,23 +64,7 @@ class WorkerConfigForm extends WorkerInfo
                             ],
                             "to" => $phoneNumber,
                         ];
-                        if (!empty($booking->memberInfo->email)) {
-                            $mailSendList[] = [
-                                'email' => $booking->memberInfo->email,
-                                'name' => $booking->memberInfo->username,
-                                'params' => [
-                                    "shop_name" => $booking->slotInfo->shopInfo->shop_name,
-                                    "worker_name" => $booking->slotInfo->workerInfo->worker_name,
-                                    "booking_date" => \App::$app->formatter->asDate($booking->slotInfo->date),
-                                    "booking_time" => \App::$app->formatter->asTime($booking->slotInfo->start_time),
-                                    "course_id" => ArrayHelper::getValue($booking::getListCourseType(), $booking->course_id),
-                                    "cost" => \App::$app->formatter->asCurrency($booking->cost),
-                                    "phone_number" => $booking->slotInfo->shopInfo->phone_number
-                                ]
-                            ];
-                        }
                     }
-                    //task-752. todo update total_booking
                     if (!$booking->slotInfo->delete()) {//1.1. todo delete booking slot
                         $this->addErrors($booking->slotInfo->getErrors());
                         break;
@@ -146,21 +130,6 @@ class WorkerConfigForm extends WorkerInfo
                     SendSMSForm::toSend($sms["to"], $smsContent, $sms["params"], [
                         SmsTemplateForm::TYPE_WORKER_WORK_BREAK,
                     ]);
-                }
-            }
-            if (count($mailSendList) > 0) {
-                //todo send Mail to customer
-                $template = TemplateMail::getMailTemplate(TemplateMail::TYPE_WORKER_WORK_BREAK);
-                foreach ($mailSendList as $mail) {
-                    $send = new Mail();
-                    $data = [
-                        'email' => $mail['email'],
-                        'name' => $mail['name'],
-                        'subject' => $mailTitle != null ? $mailTitle : $template->title,
-                        'content' => $smsContent,
-                        'params' => $mail['params']
-                    ];
-                    $send->toSend($data);
                 }
             }
             return true;

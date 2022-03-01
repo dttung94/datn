@@ -135,7 +135,7 @@ class ShopCalendar extends AbstractObject
                         (strtotime($this->work_start_time) >= strtotime($workerCalendar->work_start_time) && strtotime($this->work_end_time) <= strtotime($workerCalendar->work_end_time)) ||
                         (strtotime($this->work_start_time) <= strtotime($workerCalendar->work_end_time) && strtotime($this->work_end_time) >= strtotime($workerCalendar->work_end_time))
                     ) {
-                        $this->addError($attribute, \App::t("common.shop_calendar.message", "Bị trùng lịch", [
+                        $this->addError($attribute, \App::t("common.shop_calendar.message", $workerCalendar->workerInfo->worker_name." bị trùng lịch", [
                             "shop-name" => $workerCalendar->shopInfo->shop_name,
                             "start-time" => \App::$app->formatter->asTime($workerCalendar->work_start_time),
                             "end-time" => $workerCalendar->work_end_time,

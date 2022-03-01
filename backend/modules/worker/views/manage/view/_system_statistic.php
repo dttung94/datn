@@ -203,7 +203,7 @@ JS
                             <?php echo $totalShop; ?>
                         </div>
                         <div class="desc">
-                            Là số lượng salon mà nhân viên đang làm việc
+                            Salon mà nhân viên đã đăng ký
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@ JS
                             <?php echo $totalBooking; ?>
                         </div>
                         <div class="desc">
-                            Là số lượt được đặt lịch
+                            Lượt được đặt lịch
                         </div>
                     </div>
                 </div>

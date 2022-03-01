@@ -716,6 +716,7 @@ controllers.controller('ShopController', ['$scope', '$filter', '$location', '$wi
                                 });
                             }
                             $scope.slotManager.slotsData = res.data;
+                            console.log($scope.slotManager.slotsData)
                             $scope.$apply();
                         } else {
                             toastr.error(res.message);
