@@ -52,7 +52,7 @@ class Rating extends AbstractObject
     {
         return [
             [['user_id', 'worker_id', 'booking_id', 'price', 'behavior', 'technique', 'service', 'satisfaction'], 'required'],
-            [['created_at', 'modified_at'], 'safe'],
+            [['created_at'], 'safe'],
             [['memo'], 'string', 'max' => 255],
             [['booking_id'], 'exist', 'skipOnError' => true, 'targetClass' => BookingInfo::className(), 'targetAttribute' => ['booking_id' => 'booking_id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => UserInfo::className(), 'targetAttribute' => ['user_id' => 'user_id']],
@@ -117,7 +117,6 @@ class Rating extends AbstractObject
             if ($insert) {
                 $this->created_at = $this->currentDatetime();
             }
-            $this->modified_at = $this->currentDatetime();
             return true;
         }
         return false;
