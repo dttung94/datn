@@ -232,7 +232,7 @@ JS
                     value: value
                 },
                 success: function (res) {
-                    toastr.success('保存しました。');
+                    toastr.success('Đã lưu');
                 }
             })
         });

@@ -309,7 +309,7 @@ $isBlockUserBooking = $isBlockUserBooking ? 'checked' : '';
                     value: value
                 },
                 success: function () {
-                    toastr.success('保存しました。');
+                    toastr.success('Đã lưu');
                 }
             })
         });
