@@ -31,8 +31,12 @@ $modelShopInfo = new ShopInfo();
 $listShops = $modelShopInfo->getListShop();
 if ($users->identity->role !== \common\entities\user\UserInfo::ROLE_ADMIN) {
     $shopIds = array_intersect(array_keys($listShops), $shopIds);
+    foreach ($shopIds as $id) {
+        $listShopsLast[$id] = $listShops[$id];
+    }
 } else {
     $shopIds = array_keys($listShops);
+    $listShopsLast = $listShops;
 }
 
 if ((isset($_GET['month']) && !in_array($month, $months)) || $year > date('Y') || $year < $startYear || (isset($_GET['shop']) && !in_array($shop, $shopIds))) {
@@ -121,7 +125,7 @@ foreach ($shopIds as $key => $shopId) {
         "fillAlphas" => 1,
         "fillColors" => $colors[$key],
         "lineColor" => $colors[$key],
-        "title" =>$listShops[$shopId],
+        "title" =>$listShopsLast[$shopId],
         "type" => "column",
         "valueField" =>  $shopId,
     ];
@@ -132,7 +136,7 @@ foreach ($shopIds as $key => $shopId) {
         "fillAlphas" => 1,
         "fillColors" => $colors[$key],
         "lineColor" => $colors[$key],
-        "title" => $listShops[$shopId].'の予約数',
+        "title" => 'Số lượng đặt trước:'.$listShopsLast[$shopId],
         "type" => "column",
         "valueField" =>  $shopId,
     ];
@@ -213,7 +217,7 @@ JS
                 <select class="form-control" id="change-shop">
                     <option value="0">Toàn bộ các salon</option>
                     <?php
-                    foreach ($listShops as $keyS => $valueS) {
+                    foreach ($listShopsLast as $keyS => $valueS) {
                         $selectedS = "";
                         if ($keyS == $shop) {
                             $selectedS = "selected";

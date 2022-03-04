@@ -155,7 +155,7 @@ $this->registerJs(<<<JS
                 reloadDashboardPage("","");
             }else{
                 $('#dashboard-report-date-range span').html(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
-                reloadDashboardPage(start.format('DD/MM/YYYY'), end.format('DD/MM/YYYY'));
+                reloadDashboardPage(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
             }
         });
 
